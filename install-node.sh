@@ -1,28 +1,27 @@
 #!/usr/bin/env bash
 # ============================================================
-# GHOST OS · Автоустановка ноды Remnawave (Trojan / Hysteria2)
-# Сгенерировано Автоконфигуратором INFO GHOST OS
+# Автоустановка ноды Remnawave (Trojan / Hysteria2)
 # ============================================================
 set -euo pipefail
 
 CERTBOT_IMAGE="certbot/dns-cloudflare"   # единый образ: умеет и standalone, и dns-cloudflare
 
-echo "════════════════════════════"
-echo " GHOST OS · Установка ноды Remnawave"
-echo "════════════════════════════"
+echo "════════════════════════════════════════════"
+echo " Установка ноды Remnawave: Trojan / Hysteria2"
+echo "════════════════════════════════════════════"
 
-# ── 0. Базовые параметры ──
-read -rp "Введите SECRET_KEY (ключ из панели Remnawave, БЕЗ кавычек): " SECRET_KEY
-read -rp "Введите DOMAIN (для обычного серта — должен резолвиться на этот сервер): " DOMAIN
-read -rp "Введите email для сертификата (Let's Encrypt): " EMAIL
-
-# ── 1. Какой протокол ставим ──
+# ── 0. Какой протокол ставим ──
 echo ""
 echo "Какую ноду разворачиваем?"
 echo "  1) Trojan (TCP/TLS)"
 echo "  2) Hysteria2 (UDP/QUIC)"
 echo "  3) Обе (Trojan + Hysteria2 на одном порту, TCP+UDP)"
 read -rp "Выбор [1-3]: " NODE_MODE
+
+# ── 1. Базовые параметры ──
+read -rp "Введите SECRET_KEY (ключ из панели Remnawave, БЕЗ кавычек): " SECRET_KEY
+read -rp "Введите DOMAIN (для обычного серта — должен резолвиться на этот сервер): " DOMAIN
+read -rp "Введите email для сертификата (Let's Encrypt): " EMAIL
 
 # ── 2. Как выпускаем сертификат ──
 echo ""
